@@ -2,10 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+yatube/static/img/*
 # C extensions
 *.so
-
+*.png
+*.svg
+*.css
 # Distribution / packaging
 .Python
 build/
