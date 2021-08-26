@@ -22,7 +22,6 @@ LOGIN_REDIRECT_URL = 'posts:index'
 
 # Application definition
 INSTALLED_APPS = [
-    'core',
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
     'django.contrib.admin',
@@ -31,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'about',
+    'core',
 ]
 
 MIDDLEWARE = [

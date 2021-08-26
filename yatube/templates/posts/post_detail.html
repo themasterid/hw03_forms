@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Пост {{ post|truncatechars:30 }}{% endblock %}
+{% block content %}
+<ul>
+  <li>
+    Дата публикации: {{ post.pub_date|date:'d E Y' }}
+  </li>
+  <li>
+    Группа: {{ post.group }} 
+    {% if post.group %}
+      <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+    {% endif %}
+  </li>
+  <li>
+    Автор: {{ post.author.get_full_name }}
+  </li>
+    <li>
+    Всего постов автора:  <span >{{ posts_cnt }}</span>
+  </li>
+  <li>
+    <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
+  </li>
+</ul>
+<p>{{ post.text }}</p>
+{% endblock %}
