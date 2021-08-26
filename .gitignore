@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-yatube/static/img/*
+yatube/static/img/
 # C extensions
 *.so
 *.png
