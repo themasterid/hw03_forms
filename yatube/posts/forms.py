@@ -22,23 +22,3 @@ class PostForm(forms.Form):
         required=False,
         help_text='Группа, к которой будет относиться пост',
         label='Группа')
-
-
-'''
-def clean(self):
-    cleaned_data = super(PostForm, self).clean()
-    text = cleaned_data.get('text')
-    group = cleaned_data.get('group')
-    if not text and not group:
-        raise forms.ValidationError('You have to write something!')
-
-    class Meta:
-        model = Post
-'''
-
-'''
-class PostForm(ModelForm):
-    class Meta:
-        model = Bb
-        fields = ('text', 'group')
-'''
