@@ -88,8 +88,6 @@ def post_create(request):
 def post_edit(request, post_id):
     is_edit = True
     post = get_object_or_404(Post, id=post_id)
-    print("ТЕКСТ ПОСТА:", post.text)
-    print("ГРУППА:", post.group)
     if request.user != post.author:
         return redirect('posts:post_detail', post_id)
     if request.POST:
