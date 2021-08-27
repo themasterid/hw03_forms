@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}{{ author.get_full_name }} профайл пользователя{% endblock %}
 {% block content %}
-<h1>Все посты пользователя {{ author.get_full_name }} </h1>
-<h3>Всего постов: {{ post_list|length }} </h3> 
+<h1>Все посты пользователя {{ author.get_full_name }}</h1>
+<h3>Всего постов: {{ post_list|length }}</h3> 
 {% for post in page_obj %}
     <ul>
         <li>
@@ -10,14 +10,12 @@
         </li>
     </ul>
     <p>{{ post.text }}</p>
-        <a href="{% url 'posts:post_detail' post.id %}">подробная информация</a>
-        <br>
-        {% if post.group %}
+    <a href="{% url 'posts:post_detail' post.id %}">подробная информация</a>
+    <br>
+    {% if post.group %}
         <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-        {% endif %}
-    {% if not forloop.last %}
-    <hr>
     {% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
 {% endfor %}
 <div class="d-flex justify-content-center">
     <div>{% include 'posts/includes/paginator.html' %}</div>

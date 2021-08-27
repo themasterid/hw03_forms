@@ -91,20 +91,18 @@ def post_edit(request, post_id):
     if request.user != post.author:
         return redirect('posts:post_detail', post_id)
     is_edit = True
-    if request.method == 'POST':
+    if request.POST:
         form = PostForm(request.POST)
         if form.is_valid():
-            text = form.cleaned_data['text']
-            group = form.cleaned_data['group']
             search = Post(
-                text=text,
-                group=group,
-                author=request.user
+                text=form.cleaned_data['text'],
+                group=form.cleaned_data['group'],
+                author=post.author,
+                id=post.id,
+                pub_date=post.pub_date
             )
             search.save()
-            print('*' * 100)
             return redirect('posts:post_detail', post_id)
-    print('x' * 100)
     form = PostForm()
     return render(
         request,
