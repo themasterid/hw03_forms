@@ -1,7 +1,14 @@
 # posts/forms.py
 from django import forms
+from django.forms import ModelForm
 
 from .models import Group, Post
+
+
+class ViewForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['text', 'group', ]
 
 
 class PostForm(forms.Form):
@@ -17,6 +24,7 @@ class PostForm(forms.Form):
         label='Группа')
 
 
+'''
 def clean(self):
     cleaned_data = super(PostForm, self).clean()
     text = cleaned_data.get('text')
@@ -26,7 +34,7 @@ def clean(self):
 
     class Meta:
         model = Post
-
+'''
 
 '''
 class PostForm(ModelForm):

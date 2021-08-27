@@ -2,7 +2,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import PostForm
@@ -87,10 +86,12 @@ def post_create(request):
 
 @login_required
 def post_edit(request, post_id):
+    is_edit = True
     post = get_object_or_404(Post, id=post_id)
+    print("ТЕКСТ ПОСТА:", post.text)
+    print("ГРУППА:", post.group)
     if request.user != post.author:
         return redirect('posts:post_detail', post_id)
-    is_edit = True
     if request.POST:
         form = PostForm(request.POST)
         if form.is_valid():
