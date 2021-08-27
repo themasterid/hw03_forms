@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Последние обновления на сайте{% endblock %}
+{% block header %}{{ group.title }}{% endblock %}
 {% block content %}
   {% for post in page_obj %}
       <ul>

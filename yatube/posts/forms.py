@@ -3,14 +3,26 @@ from django import forms
 
 from .models import Group, Post
 
-md = ['test1', 'test2']
-
 
 class PostForm(forms.Form):
-    text = forms.CharField(widget=forms.Textarea, max_length=400)
+    text = forms.CharField(
+        widget=forms.Textarea(),
+        max_length=400,
+        help_text='Текст нового поста',
+        label='Текст поста')
     group = forms.ModelChoiceField(
         queryset=Group.objects.select_related(),
-        required=False)
+        required=False,
+        help_text='Группа, к которой будет относиться пост',
+        label='Группа')
+
+
+def clean(self):
+    cleaned_data = super(PostForm, self).clean()
+    text = cleaned_data.get('text')
+    group = cleaned_data.get('group')
+    if not text and not group:
+        raise forms.ValidationError('You have to write something!')
 
     class Meta:
         model = Post
