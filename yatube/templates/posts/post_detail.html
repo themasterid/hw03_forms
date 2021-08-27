@@ -1,25 +1,34 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %}Пост {{ post|truncatechars:30 }}{% endblock %}
 {% block content %}
-<ul>
-  <li>
-    Дата публикации: {{ post.pub_date|date:'d E Y' }}
-  </li>
-  <li>
-    Группа: {{ post.group }} 
-    {% if post.group %}
-      <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-    {% endif %}
-  </li>
-  <li>
-    Автор: {{ post.author.get_full_name }}
-  </li>
-    <li>
-    Всего постов автора:  <span >{{ posts_cnt }}</span>
-  </li>
-  <li>
-    <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
-  </li>
-</ul>
-<p>{{ post.text }}</p>
+<div class="row">
+  <aside class="col-12 col-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Дата публикации: {{ post.pub_date|date:'d E Y' }}
+      </li>
+      <li class="list-group-item">
+        Группа: {{ post.group }} 
+        {% if post.group %}
+          <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+        {% endif %}
+      </li>
+      <li class="list-group-item">
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li class="list-group-item">
+        Всего постов автора: <span >{{ posts_cnt }}</span>
+      </li>
+      <li class="list-group-item">
+        <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
+      </li>
+    </ul>
+  </aside>
+  <article class="col-12 col-md-9">
+    <p>{{ post }}</p>
+    <a class="btn btn-primary" href="{% url 'posts:edit' post.id %}">
+        редактировать запись
+    </a> 
+  </article>
+</div>
 {% endblock %}
