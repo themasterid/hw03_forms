@@ -15,9 +15,7 @@
         <li class="nav-item">
           <a class="nav-link {% if view_name == 'about:tech' %}active{% endif %}" href="{% url 'about:tech' %}">Технологии</a>
         </li>
-        {% endwith %}
         {% if user.is_authenticated %}
-        {% with request.resolver_match.view_name as view_name %}
         <li class="nav-item"> 
           <a class="nav-link {% if view_name == 'posts:create' %}active{% endif %}" href="{% url 'posts:create' %}">Новая запись</a>
         </li>
@@ -30,17 +28,15 @@
         <li class="nav-item">
           <a class="nav-link">Пользователь: {{ user.username }}</a>
         </li>
-        {% endwith %}
         {% else %}
-        {% with request.resolver_match.view_name as view_name %}
         <li class="nav-item"> 
           <a class="nav-link link-light {% if view_name == 'users:login' %}active{% endif %}" href="{% url 'users:login' %}">Войти</a>
         </li>
         <li class="nav-item"> 
           <a class="nav-link link-light {% if view_name == 'users:signup' %}active{% endif %}" href="{% url 'users:signup' %}">Регистрация</a>
         </li>
-        {% endwith %}
         {% endif %}
+        {% endwith %}
       </ul>
     </div>
   </nav>
