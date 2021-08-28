@@ -9,12 +9,12 @@ class Group(models.Model):
     slug = models.SlugField(max_length=200, unique=True, verbose_name='ЧПУ')
     description = models.TextField(max_length=400, verbose_name='Описание')
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name_plural = 'Группы'
         verbose_name = 'Группу'
+
+    def __str__(self):
+        return self.title
 
 
 class Post(models.Model):
@@ -41,10 +41,10 @@ class Post(models.Model):
         verbose_name='Группа'
     )
 
-    def __str__(self):
-        return self.text
-
     class Meta:
         ordering = ['-pub_date']
         verbose_name_plural = 'Посты'
         verbose_name = 'Пост'
+
+    def __str__(self):
+        return self.text
