@@ -19,7 +19,7 @@
         {% endif %}
       </li>
       <li class="list-group-item">
-        Автор: {{ post.author.get_full_name }} {{ post.author }}
+        Автор: {% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}
       </li>
       <li class="list-group-item">
         Всего постов автора: {{ posts_count }}
@@ -31,7 +31,7 @@
   </aside>
   <article class="col-12 col-md-9">
     <p>{{ post }}</p>
-    <a class="btn btn-primary" href="{% url 'posts:edit' post.id %}">редактировать запись</a> 
+    <a class="btn btn-primary" href="{% url 'posts:edit' post.id %}">редактировать запись</a>
   </article>
 </div>
 {% endblock %}

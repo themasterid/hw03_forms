@@ -6,7 +6,7 @@
 {% for post in page_obj %}
 <ul>
   <li>
-    Автор: {{ post.author.get_full_name }} <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
+    Автор: {% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %} <a href="{% url 'posts:profile' post.author %}">все посты пользователя</a>
   </li>
   <li>
     Дата публикации: {{ post.pub_date|date:'d E Y' }}
