@@ -48,7 +48,8 @@ def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     posts_count = Post.objects.filter(author=post.author).count()
     template = 'posts/post_detail.html'
-    context = {'post': post, 'posts_count': posts_count}
+    context = {
+        'post': post, 'posts_count': posts_count, 'requser': request.user}
     return render(request, template, context)
 
 
@@ -74,7 +75,6 @@ def post_edit(request, post_id):
     if form.is_valid():
         form.save(commit=False).save()
         return redirect('posts:post_detail', post_id)
-    is_edit = True
     template = 'posts/create_post.html'
-    context = {'form': form, 'is_edit': is_edit}
+    context = {'form': form, 'is_edit': True}
     return render(request, template, context)
