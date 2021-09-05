@@ -73,7 +73,7 @@ def post_edit(request, post_id):
         return redirect('posts:post_detail', post_id)
     form = PostForm(request.POST or None, instance=edit_post)
     if form.is_valid():
-        form.save(commit=False).save()
+        form.save()
         return redirect('posts:post_detail', post_id)
     template = 'posts/create_post.html'
     context = {'form': form, 'is_edit': True}
