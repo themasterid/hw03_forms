@@ -1,12 +1,21 @@
 import os
 
+import environ
+
+env = environ.Env()
+
+environ.Env.read_env()
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 's3vk^7l6+rf$b4(k1_wuik6cn&$z!zm&w!35@eyc9$(ur9vx@r'
+SECRET_KEY = env(
+    'SECRET_KEY',
+    default="unsafe-secret-key-45t548fh48fh4gefgh4734753erhg#$@#$")
 
-DEBUG = True
+DEBUG = env('DEBUG', default='True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env(
+    'ALLOWED_HOSTS', default='localhost').split(', ')
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 
@@ -19,14 +28,15 @@ LOGIN_REDIRECT_URL = 'posts:index'
 # LOGOUT_REDIRECT_URL = 'posts:index'
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
-    'posts.apps.PostsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'users.apps.UsersConfig',
+    'posts.apps.PostsConfig',
     'about',
     'core',
 ]
@@ -84,9 +94,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -95,6 +105,8 @@ USE_L10N = False
 USE_TZ = True
 
 DATE_FORMAT = 'd E Y'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 

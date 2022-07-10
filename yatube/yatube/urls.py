@@ -1,4 +1,3 @@
-# yatube/urls.py
 from django.contrib import admin
 from django.urls import include, path
 
@@ -8,5 +7,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('posts.urls', namespace='index')),
     path('about/', include('about.urls', namespace='about')),
-    path('', include('about.urls', namespace='about')),
 ]

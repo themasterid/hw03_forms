@@ -7,14 +7,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import PostForm
 from .models import Group, Post
 
-# from django.db import connection
-
-
 User = get_user_model()
 
 
 def index(request):
-    post_list = Post.objects.all()
+    post_list = Post.objects.select_related('group')
     paginator = Paginator(post_list, settings.NUMBER_POST)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -27,7 +24,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = group.posts.all()
+    posts = group.posts.select_related('group')
     paginator = Paginator(posts, settings.NUMBER_POST)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
