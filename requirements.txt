@@ -6,7 +6,7 @@
 #
 attrs==19.3.0             # via pytest
 beautifulsoup4
-certifi==2019.9.11        # via requests
+certifi==2023.7.22        # via requests
 chardet==3.0.4            # via requests
 django-debug-toolbar==2.2.1
 django==2.2.28
