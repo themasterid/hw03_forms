@@ -25,7 +25,7 @@ pytz==2019.3              # via django
 requests==2.31.0
 six==1.14.0               # via packaging
 sorl-thumbnail==12.6.3
-sqlparse==0.4.4           # via django, django-debug-toolbar
+sqlparse==0.5.0           # via django, django-debug-toolbar
 urllib3==1.26.18           # via requests
 wcwidth==0.1.8            # via pytest
 zipp==2.2.0               # via importlib-metadata
