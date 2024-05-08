@@ -93,7 +93,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 В папку с проектом, где файл settings.py добавляем файл .env куда прописываем наши параметры:
 
-```bash
+```env
 SECRET_KEY='Ваш секретный ключ'
 ALLOWED_HOSTS='127.0.0.1, localhost'
 DEBUG=True
@@ -106,7 +106,7 @@ DEBUG=True
 .venv
 ```
 
-Для запуска тестов выполним:
+Для запуска тестов выполним (можно пропустить, пока на фиксе):
 
 ```bash
 pytest
@@ -152,12 +152,14 @@ tests/test_homework.py::TestGroup::test_group_model PASSED                      
 Запускаем проект:
 
 ```bash
-python yatube/manage.py runserver localhost:80
+python yatube/manage.py runserver localhost:8000
 ```
 
-После чего проект будет доступен по адресу http://localhost/
+После чего проект будет доступен по адресу http://localhost:8000/
 
 Заходим в http://localhost/admin и создаем группы и записи.
 После чего записи и группы появятся на главной странице.
+
+PS: TODO Переделать выход юзера!
 
 Автор: [Дмитрий Клепиков](https://github.com/themasterid) :+1:

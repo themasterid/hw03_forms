@@ -14,8 +14,7 @@ SECRET_KEY = env(
 
 DEBUG = env('DEBUG', default='True') == 'True'
 
-ALLOWED_HOSTS = env(
-    'ALLOWED_HOSTS', default='localhost').split(', ')
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", default="localhost").split(", ")
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 
@@ -106,10 +105,12 @@ USE_TZ = True
 
 DATE_FORMAT = 'd E Y'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 STATIC_URL = '/static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 NUMBER_POST = 10
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
