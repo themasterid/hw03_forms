@@ -29,6 +29,6 @@ sorl-thumbnail==12.10.0
 soupsieve==2.5
 sqlparse==0.5.0
 toml==0.10.2
-urllib3==2.2.1
+urllib3==2.2.2
 wcwidth==0.2.13
 zipp==3.18.1
